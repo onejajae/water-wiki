@@ -1,0 +1,22 @@
+services:
+  api:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.api
+    container_name: water-wiki-api
+    ports:
+      - 50000:50000
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: water-wiki-nginx
+    restart: always
+    depends_on:
+      - api
+    volumes:
+      - ./frontend/dist:/app
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 443:443
+      - 80:80
+

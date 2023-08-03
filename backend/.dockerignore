@@ -1,0 +1,25 @@
+# Environments
+.env
+
+
+# Virtual Environments
+.venv
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+### PyCharm ###
+.idea/
+
+
+### VisualStudioCode ###
+.vscode/
+
+
+### etc ###
+misc/
