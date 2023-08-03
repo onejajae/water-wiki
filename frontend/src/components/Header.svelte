@@ -30,11 +30,11 @@
 <div>
   <div class="text-end mt-1">
     {#if !(isLogin)}
-      <a href="#" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" data-bs-toggle="modal" data-bs-target="#{loginModalId}">
+      <a href={"#"} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" data-bs-toggle="modal" data-bs-target="#{loginModalId}">
         로그인
       </a>
     {:else}
-      <a href="#" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" on:click={logout}>
+      <a href={"#"} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" on:click={logout}>
         로그아웃
       </a>
     {/if}
