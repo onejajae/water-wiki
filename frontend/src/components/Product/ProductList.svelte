@@ -1,9 +1,7 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   import ProductListElement from "./ProductListElement.svelte";
   import productApi from "../../api/product"
 	import InfiniteLoading from 'svelte-infinite-loading';
-  import {router} from 'tinro'
 
 
   let page = 0;

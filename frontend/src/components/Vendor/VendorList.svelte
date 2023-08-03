@@ -2,25 +2,39 @@
   import VendorListElement from "./VendorListElement.svelte";
   import { onMount } from "svelte";
   import vendorApi from "../../api/vendor"
+	import InfiniteLoading from 'svelte-infinite-loading';
 
+  let page = 0;
+  let size = 30;
   let vendors = []
   let formKeyword = ""
   let searchKeyword = ""
 
   const accordionId = "vendorListAccordion"
 
-  onMount(async () => {
-    const res = await vendorApi.getList()
-    vendors = res.data
-  })
+  // onMount(async () => {
+  //   const res = await vendorApi.getList()
+  //   vendors = res.data
+  // })
+
+  async function infiniteHandler({ detail: { loaded, complete } }) {
+    const res = await vendorApi.getList(page, size, searchKeyword)
+    if (res.data.length) {
+      page++;
+      vendors = [...vendors, ...res.data];
+      loaded();
+    }
+    else {
+      complete()
+    }
+	}
 
   async function search(event) {
     event.preventDefault()
     if (searchKeyword === formKeyword) return
     searchKeyword = formKeyword
-
-    const res = await vendorApi.getList(searchKeyword)
-    vendors = res.data
+    vendors = []
+    page = 0
   }
 
 </script>
@@ -34,7 +48,9 @@
     {#each vendors as vendor}
       <VendorListElement vendor={vendor} {accordionId}/>      
     {/each}
+    {#key searchKeyword}
+      <InfiniteLoading on:infinite={infiniteHandler} />
+    {/key}
   </div>
-
 </div>
 

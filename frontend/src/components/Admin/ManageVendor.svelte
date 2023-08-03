@@ -9,7 +9,7 @@
   let isLoad = false;
      
   async function getVendorList() {
-    const res = await vendorApi.getAll()
+    const res = await vendorApi.getList(0, 1000)
     vendors = res.data
     isLoad = true
     console.log(vendors)

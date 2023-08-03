@@ -9,7 +9,7 @@
     let isLoad = false;
  
     async function getSupplierList() {
-      const res = await supplierApi.getAll()
+      const res = await supplierApi.getList(0, 1000)
       suppliers = res.data
       isLoad = true
       console.log(suppliers)

@@ -1,26 +1,19 @@
 import instance from "../api";
 
 export default {
-  getList(keyword="") {
+  getList(page=0, size=30, keyword="") {
     const res = instance.get(`/supplier/`, {
       params: {
+        page: page,
+        size: size,
         keyword: keyword
       }
     })
     return res
   },
 
-  get(productId) {
-    const res = instance.get(`/supplier/${productId}`)
-    res.then(data => {
-      data.data.products.map(e => {
-        if (e.vendor === null) {
-          e.vendor = {id: -1, name:"test"};
-          return e
-        }
-        else return e;
-      })
-    })
+  get(supplierId) {
+    const res = instance.get(`/supplier/${supplierId}`)
     return res
   },
 
