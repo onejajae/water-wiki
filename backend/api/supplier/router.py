@@ -12,8 +12,8 @@ from .service import get_list, get
 router = APIRouter()
 
 @router.get("/", response_model=list[SupplierReadMinimal])
-def get_suppliers(db: Session = Depends(get_db)):
-  suppliers = get_list(db=db)
+def get_suppliers(db: Session = Depends(get_db), keyword: str = ""):
+  suppliers = get_list(db=db, keyword=keyword)
   return suppliers
 
 @router.get("/{supplier_id}", response_model=SupplierRead)

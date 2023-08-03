@@ -10,8 +10,8 @@ from .service import get_list, get
 router = APIRouter()
 
 @router.get("/", response_model=list[VendorReadMinimal])
-def get_vendors(db: Session = Depends(get_db)):
-  return get_list(db=db)
+def get_vendors(db: Session = Depends(get_db), keyword: str = ""):
+  return get_list(db=db, keyword=keyword)
 
 @router.get("/{vendor_id}", response_model=VendorRead)
 def get_vendor(vendor_id: int, db: Session = Depends(get_db)):
