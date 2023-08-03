@@ -40,7 +40,7 @@
 </script>
 
 <form class="input-group">
-  <input type="text" class="form-control" placeholder="수원지 검색" bind:value={formKeyword}>
+  <input type="text" class="form-control" placeholder="유통사 검색" bind:value={formKeyword}>
   <button class="btn btn-outline-secondary" type="submit" on:click={search}>검색</button>
 </form>
 <div class="my-2">
