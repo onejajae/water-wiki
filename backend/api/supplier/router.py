@@ -12,9 +12,9 @@ from .service import get_list, get
 router = APIRouter()
 
 @router.get("/", response_model=list[SupplierReadMinimal])
-def get_suppliers(db: Session = Depends(get_db), keyword: str = ""):
-  suppliers = get_list(db=db, keyword=keyword)
-  return suppliers
+def get_suppliers(db: Session = Depends(get_db),
+                 page: int = 0, size: int = 30, keyword: str = ""):
+  return get_list(db=db, offset=page*size, limit=size, keyword=keyword)
 
 @router.get("/{supplier_id}", response_model=SupplierRead)
 def get_supplier(supplier_id: int, db: Session = Depends(get_db)):
