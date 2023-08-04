@@ -19,9 +19,7 @@
             </div>
             <div class="text-truncate">
               <small class="text-body-secondary">
-                {#each product.suppliers as supplier}
-                  {supplier.name}, 
-                {/each}
+                {product.suppliers.map(supplier => supplier.name).join(", ")}
               </small>
             </div>
           </div>

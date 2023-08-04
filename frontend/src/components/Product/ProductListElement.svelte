@@ -1,5 +1,6 @@
 <script>
   export let product;
+
 </script>
 
 <div class="mb-3">
@@ -19,9 +20,7 @@
             </div>
           </div>
           <p class="card-text text-truncate">
-            {#each product.suppliers as supplier}
-              {supplier.name}, 
-            {/each}
+            {product.suppliers.map(supplier => supplier.name).join(", ")}
           </p>
         </div>
       </div>
