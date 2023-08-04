@@ -14,7 +14,6 @@
     isLoading = true
     const res = await supplierApi.get(meta.params.supplier_id)
     supplier = res.data
-    console.log(supplier)
     isLoading = false
   }
 

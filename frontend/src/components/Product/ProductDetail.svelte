@@ -17,7 +17,6 @@
     isLoading = true
     const res = await productApi.get(meta.params.product_id)
     product = res.data
-    console.log(product)
     isLoading = false
   }
 </script>
@@ -55,7 +54,7 @@ Loading....
               </a>
               <div>
                 {#each supplier.products as product}
-                  <a class="btn btn-light rounded-pill btn-sm"  href="/product/{product.id}">{product.name}</a>
+                  <a class="btn btn-light rounded-pill btn-sm me-1 mt-1"  href="/product/{product.id}">{product.name}</a>
                 {/each}
               </div>
             </dl>

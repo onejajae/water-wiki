@@ -26,11 +26,23 @@
   <div id={element_id} class="accordion-collapse collapse" data-bs-parent="#{accordionId}">
     <div class="accordion-body">
       <dl class="row">
-        <dt class="col-sm-3">대표자명</dt>
-        <dd class="col-sm-9">{supplier.ceo_name}</dd>
+        <!-- <dt class="col-sm-3">대표자명</dt>
+        <dd class="col-sm-9">{supplier.ceo_name}</dd> -->
        
         <!-- <dt class="col-sm-3">전화번호</dt>
         <dd class="col-sm-9">{supplier.phone_number}</dd> -->
+
+        <!-- <hr class="border bordor-color-primary"> -->
+      
+        <dt class="col-sm-3">생산제품</dt>
+        <dd class="col-sm-9">
+          <div>
+            {#each supplier.products as product}
+              <a href="/product/{product.id}" class="btn btn-light rounded-pill btn-sm me-1 mt-1">{product.name}</a> 
+            {/each}
+          </div>
+        </dd>
+        
         <dt class="col-sm-3"></dt>
         <dd class="col-sm-9">
           <a class="link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/supplier/{supplier.id}">
@@ -40,20 +52,10 @@
               <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
             </svg>
           </span>
-             자세히 보기
+          자세히 보기
           </a>
         </dd>
-
-        <hr class="border bordor-color-primary">
-      
-        <dt class="col-sm-3">생산제품</dt>
-        <dd class="col-sm-9">
-          <div>
-            {#each supplier.products as product}
-              <a href="/product/{product.id}" class="btn btn-light rounded-pill btn-sm" type="submit">{product.name}</a> 
-            {/each}
-          </div>
-        </dd>
+      </dl>
     </div>
     
   </div>
