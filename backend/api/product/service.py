@@ -22,7 +22,7 @@ def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
       Supplier.address.ilike(f'%{keyword}%'),
       Vendor.name.ilike(f'%{keyword}%'),
     )
-    products = products.join(Supplier, Product.suppliers).join(Vendor).filter(filters)  # distinct might be unnecessary?
+    products = products.join(Supplier, Product.suppliers).outerjoin(Vendor).filter(filters)  # distinct might be unnecessary?
 
   return products.order_by(Product.name.asc()).offset(offset).limit(limit).all()
 
