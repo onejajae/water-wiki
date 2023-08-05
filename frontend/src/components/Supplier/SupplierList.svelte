@@ -53,7 +53,14 @@
       <SupplierListElement supplier={supplier} {accordionId} />
     {/each}
     {#key searchKeyword}
-      <InfiniteLoading on:infinite={infiniteHandler} />
+      <InfiniteLoading on:infinite={infiniteHandler}>
+        <div class="mt-3" slot="noMore">
+          총 {suppliers.length}개의 수원지를 찾았습니다.
+        </div>
+        <div class="mt-3" slot="noResults">
+          결과가 없습니다.
+        </div>
+      </InfiniteLoading>
     {/key}
   </div>
 </div>

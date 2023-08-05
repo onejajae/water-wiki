@@ -11,6 +11,6 @@
 <section class="container">
   <Router />
 </section>
-<footer class="">
+<footer>
   <Footer />
 </footer>
