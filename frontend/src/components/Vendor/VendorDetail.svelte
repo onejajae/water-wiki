@@ -21,7 +21,11 @@
 </script>
 
 {#if isLoading}
-Loading....
+<div class="text-center v-100">
+  <div class="spinner-border text-dark" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
 {:else}
 <div class="row m-2">
   <div class="col-lg-5">

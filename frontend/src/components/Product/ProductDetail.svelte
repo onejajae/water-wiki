@@ -24,7 +24,11 @@
 
 
 {#if isLoading}
-Loading....
+<div class="text-center">
+  <div class="spinner-border text-dark" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
 {:else}
 <div class="row m-2">
   <div class="col-md-12">
