@@ -22,7 +22,7 @@
 </script>
 
 <Route>
-  <Route path="/" redirect="/supplier"><Main/></Route>
+  <Route path="/" redirect="/product"><Main/></Route>
   <Route path="/product/*">
     <Route path="/"><Product/></Route>
     <Route path="/:product_id" let:meta><ProductDetail meta={meta} /></Route>
