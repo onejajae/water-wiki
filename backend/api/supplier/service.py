@@ -19,7 +19,7 @@ def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
     )
     suppliers = suppliers.join(Product, Supplier.products).filter(filters).distinct()
 
-  return suppliers.offset(offset).limit(limit).all()
+  return suppliers.order_by(Supplier.name.asc()).offset(offset).limit(limit).all()
 
 # def create(db: Session, supplier_in: SupplierCreate):
 #   new_supplier = Supplier(**supplier_in.dict())
