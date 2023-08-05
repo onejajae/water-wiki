@@ -16,7 +16,7 @@ def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
     )
     vendors = vendors.join(Product).filter(filters).distinct()  # distinct might be unnecessary?
 
-  return vendors.offset(offset).limit(limit).all()
+  return vendors.order_by(Vendor.name.asc()).offset(offset).limit(limit).all()
 
 # def create(db: Session, vendor_in: VendorCreate):
 #   vendor = Vendor(**vendor_in.dict())
