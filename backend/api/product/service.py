@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 
 from pydantic.error_wrappers import ValidationError
 
@@ -15,7 +16,13 @@ def get(db: Session, product_id: int):
 def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
   products = db.query(Product)
   if keyword:
-    products = products.filter(Product.name.ilike(f'%{keyword}%'))
+    filters = or_(
+      Product.name.ilike(f'%{keyword}%'),
+      Supplier.name.ilike(f'%{keyword}%'),
+      Supplier.address.ilike(f'%{keyword}%'),
+      Vendor.name.ilike(f'%{keyword}%'),
+    )
+    products = products.join(Supplier, Product.suppliers).join(Vendor).filter(filters).distinct()  # distinct might be unnecessary?
 
   return products.offset(offset).limit(limit).all()
 

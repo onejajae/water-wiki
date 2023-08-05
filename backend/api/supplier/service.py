@@ -1,7 +1,8 @@
 
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 
-from db.models import Supplier
+from db.models import Supplier, Product
 
 
 
@@ -11,7 +12,12 @@ def get(db: Session, supplier_id: int):
 def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
   suppliers = db.query(Supplier)
   if keyword:
-    suppliers = suppliers.filter(Supplier.name.ilike(f'%{keyword}%'))
+    filters = or_(
+      Supplier.name.ilike(f'%{keyword}%'),
+      Supplier.address.ilike(f'%{keyword}%'),
+      Product.name.ilike(f'%{keyword}%'),
+    )
+    suppliers = suppliers.join(Product, Supplier.products).filter(filters).distinct()
 
   return suppliers.offset(offset).limit(limit).all()
 
