@@ -1,11 +1,13 @@
 from sqlalchemy.orm import Session
-from db.models import User
-
-from .schema import UserCreate, Token
 
 from bcrypt import hashpw, gensalt, checkpw
-from datetime import datetime, timedelta
 import jwt
+
+from datetime import datetime, timedelta
+
+from db.model import User
+from .schema import UserCreate, Token
+
 
 def create_user(db: Session, user_in: UserCreate):
   hashed_password = hashpw(user_in.password.encode("utf-8"), gensalt())

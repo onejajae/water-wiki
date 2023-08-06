@@ -1,9 +1,7 @@
-
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
-from db.models import Supplier, Product
-
+from db.model import Supplier, Product
 
 
 def get(db: Session, supplier_id: int):
