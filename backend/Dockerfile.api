@@ -1,8 +1,9 @@
 FROM python:3.10.12
-WORKDIR /usr/src/app
 
-COPY . .
-RUN pip install -r ./requirements.txt
+COPY ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
 ENV PYTHONUNBUFFERED=0
-EXPOSE 50000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "50000"]
+
+WORKDIR /app
+CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", ":50000"]

@@ -4,8 +4,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile.api
     container_name: water-wiki-api
-    ports:
-      - 50000:50000
+    volumes:
+      - ./backend:/app
     environment:
         - TZ=Asia/Seoul
 
@@ -23,4 +23,3 @@ services:
       - 80:80
     environment:
         - TZ=Asia/Seoul
-
