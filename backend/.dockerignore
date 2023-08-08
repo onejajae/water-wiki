@@ -1,9 +1,9 @@
 # Environments
-.env
+.env*
 
 
 # Virtual Environments
-.venv
+venv/
 
 
 ### Python ###
