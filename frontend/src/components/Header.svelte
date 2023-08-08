@@ -1,7 +1,9 @@
 <script>
   import { active } from "tinro";
+  import { get } from "svelte/store"
   import { token } from "../stores";
   import LoginModal from "./LoginModal.svelte";
+  import authApi from "../api/auth"
 
   let isLogin = false
   let isAdmin = false
@@ -25,17 +27,31 @@
     token.is_admin.set(false)
     location.reload()
   }
+
+  async function aboutMe() {
+    const a = await authApi.me(get(token.access_token))
+    console.log(await a.data)
+  }
 </script>
 
 <div>
   <div class="text-end mt-1">
     {#if !(isLogin)}
       <a href={"#"} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" data-bs-toggle="modal" data-bs-target="#{loginModalId}">
-        로그인
+        <span class="ms-3">
+          로그인
+        </span>
       </a>
     {:else}
+    <a href={"#"} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" on:click={aboutMe}>
+      <span class="ms-3">
+        내 정보 보기
+      </span>
+    </a>
       <a href={"#"} class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" on:click={logout}>
-        로그아웃
+        <span class="ms-3">
+          로그아웃
+        </span>
       </a>
     {/if}
   </div>

@@ -12,5 +12,13 @@ export default {
     const res = instance.post(`/user/login`, params, { headers })
     return res
   },
+  
+  me(token) {
+    const headers = {
+      'Authorization': `Bearer ${token}`
+    }
+    const res = instance.get(`/user/me`, { headers })
+    return res
+  }
 
 }
