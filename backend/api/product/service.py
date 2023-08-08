@@ -1,31 +1,40 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from sqlalchemy import or_, func
 
 from db.model import Product, Vendor, Supplier
 
 
 def get(db: Session, product_id: int):
-  return db.query(Product).get(product_id)
+    return db.query(Product).get(product_id)
+
 
 def get_list(db: Session, offset: int = 0, limit: int = 30, keyword: str = ""):
-  products = db.query(Product)
-  if keyword:
-    filters = or_(
-      Product.name.ilike(f'%{keyword}%'),
-      Supplier.name.ilike(f'%{keyword}%'),
-      Supplier.address.ilike(f'%{keyword}%'),
-      Vendor.name.ilike(f'%{keyword}%'),
+    products = db.query(Product).outerjoin(Supplier, Product.suppliers)
+    if keyword:
+        filters = or_(
+            Product.name.ilike(f"%{keyword}%"),
+            Supplier.name.ilike(f"%{keyword}%"),
+            Supplier.address.ilike(f"%{keyword}%"),
+            Vendor.name.ilike(f"%{keyword}%"),
+        )
+        products = products.outerjoin(Vendor).filter(filters)
+
+    return (
+        products.group_by(Product.id)
+        .order_by(func.count(Product.name).desc())
+        .offset(offset)
+        .limit(limit)
+        .all()
     )
-    products = products.join(Supplier, Product.suppliers).outerjoin(Vendor).filter(filters)  # distinct might be unnecessary?
 
-  return products.order_by(Product.name.asc()).offset(offset).limit(limit).all()
 
-def get_all(db:Session):
-  return db.query(Product).all()
+def get_all(db: Session):
+    return db.query(Product).all()
+
 
 # def create(db:Session, product_in: ProductCreate):
 #   product = Product(name=product_in.name)
-  
+
 #   vendor = db.query(Vendor).get(product_in.vendor_id)
 #   vendor.products.append(product)
 
@@ -37,9 +46,6 @@ def get_all(db:Session):
 #   db.commit()
 
 
-
-
 def delete(db: Session, product_id: int):
-  db.query(Product).filter(Product.id == product_id).delete()
-  db.commit()
-  
+    db.query(Product).filter(Product.id == product_id).delete()
+    db.commit()

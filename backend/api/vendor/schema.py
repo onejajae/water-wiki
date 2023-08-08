@@ -1,44 +1,39 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
-from typing import List, Optional, ForwardRef
+from pydantic import ConfigDict, BaseModel
 
 
 class VendorBase(BaseModel):
-  id: int
-  name: str
-
-  class Config:
-    orm_mode = True
+    id: int
+    name: str
+    model_config = ConfigDict(from_attributes=True)
 
 
 class VendorCreate(BaseModel):
-  name: str
-  address: str
-  phone_number: str
-  ceo_name: str
-  declare_datetime: datetime
-  is_running: bool
+    name: str
+    address: str
+    phone_number: str
+    ceo_name: str
+    declare_datetime: datetime
+    is_running: bool
 
 
 class VendorReadMinimal(VendorBase):
-  address: str
-  phone_number: Optional[str]
-  ceo_name: str
-  products: List['ProductBase']
+    address: str
+    phone_number: str | None
+    ceo_name: str
+    products: list["ProductBase"]
 
 
 class VendorRead(VendorBase):
-  id: int
-  name: str
-  address: str
-  phone_number: Optional[str]
-  ceo_name: str
-  declare_datetime: datetime
-  is_running: bool
-  products: List['ProductReadMinimal'] = []
+    id: int
+    name: str
+    address: str
+    phone_number: str | None
+    ceo_name: str
+    declare_datetime: datetime
+    is_running: bool
+    products: list["ProductReadMinimal"] = []
 
 
 from api.product.schema import ProductReadMinimal, ProductBase
-VendorReadMinimal.update_forward_refs()
-VendorRead.update_forward_refs()

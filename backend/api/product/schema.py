@@ -1,51 +1,47 @@
-from pydantic import BaseModel, Field, validator
-from typing import List, Optional, ForwardRef
+from pydantic import field_validator, ConfigDict, BaseModel
 
 
 class ProductBase(BaseModel):
-  id: int
-  name: str
-
-  class Config:
-    orm_mode = True
+    id: int
+    name: str
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ProductCreate(BaseModel):
-  name: str
-  vendor_id: Optional[int]
-  suppliers_id: Optional[List[int]]
+    name: str
+    vendor_id: int | None
+    suppliers_id: list[int] = []
 
 
 class ProductReadMinimal(ProductBase):
-  vendor: 'VendorBase'
-  suppliers: List['SupplierBase'] = []
+    vendor: "VendorBase"
+    suppliers: list["SupplierBase"] = []
 
-  @validator("vendor", pre=True)
-  def set_vendor_default(cls, v):
-    if v is None:
-      return VendorBase(id=-1, name="")
-    else:
-      return v
+    @field_validator("vendor", mode="before")
+    @classmethod
+    def set_vendor_default(cls, v):
+        if v is None:
+            return VendorBase(id=-1, name="")
+        else:
+            return v
 
 
 class ProductRead(ProductBase):
-  vendor: 'VendorBase'
-  suppliers: List['SupplierReadMinimal'] = []
+    vendor: "VendorBase"
+    suppliers: list["SupplierReadMinimal"] = []
 
-  @validator("vendor", pre=True)
-  def set_vendor_default(cls, v):
-    if v is None:
-      return VendorBase(id=-1, name="")
-    else:
-      return v
+    @field_validator("vendor", mode="before")
+    @classmethod
+    def set_vendor_default(cls, v):
+        if v is None:
+            return VendorBase(id=-1, name="")
+        else:
+            return v
 
 
 class ProductPagination(BaseModel):
-  items: List['ProductReadMinimal']
+    items: list["ProductReadMinimal"]
 
 
 from api.vendor.schema import VendorReadMinimal, VendorBase
 from api.supplier.schema import SupplierReadMinimal, SupplierBase
-
-ProductReadMinimal.update_forward_refs()
-ProductRead.update_forward_refs()
