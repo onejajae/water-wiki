@@ -1,37 +1,39 @@
 # Water Wiki
+A portal for bottled-spring-water information that has been manufactured and sold in Korea.
 
 ## Backend
-### Prerequisites
+### 1. Prerequisites
 * Python 3.10+ (If lower, python cannot check some types)
 * virtualenv
-### Installation
+### 2. Installation
 ```
 water-wiki$ cd backend/
 water-wiki/backend$ virtualenv venv --python=python3.10
 water-wiki/backend$ source venv/bin/activate
 (venv) water-wiki/backend$ pip install -r requirments.txt
 ```
+
 ## Frontend
-### Prerequisites
+### 1. Prerequisites
 * nodejs 16+
-### Installation
+### 2. Installation
 ```
 water-wiki$ cd frontend/
 water-wiki/frontend$ npm i
 ```
 
 ## Deployment
-### Prerequisites
+### 1. Prerequisites
 * docker
 * docker-compose-plugin
-### Build Docker Image
+### 2. Build Docker Image
 ```
 water-wiki$ docker compose build
 ```
-### Write .env Files
+### 3. Write .env Files
 * Write `.env.prod` into `backend/`
 * Write `.env.production` into `frontend/`
-### Run
+### 4. Run
 ```
 water-wiki$ docker compose up
 ```
