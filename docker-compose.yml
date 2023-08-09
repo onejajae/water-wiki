@@ -18,7 +18,7 @@ services:
       - api
     volumes:
       - ./frontend/dist:/app
-      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       # - 443:443
       - 80:80
