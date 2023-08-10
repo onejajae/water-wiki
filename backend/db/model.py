@@ -41,6 +41,7 @@ class Supplier(Base):
     products = relationship(
         "Product", secondary=supplied_product, back_populates="suppliers"
     )
+    violations = relationship("Violation", back_populates="supplier")
 
 
 class Vendor(Base):
@@ -63,3 +64,17 @@ class User(Base):
     username = Column(String(30), nullable=False)
     password = Column(String, nullable=False)
     is_admin = Column(Boolean, nullable=False)
+
+
+class Violation(Base):
+    __tablename__ = "violation"
+
+    id = Column(Integer, primary_key=True)
+    issued_datetime = Column(DateTime, nullable=False)
+    level = Column(String(10), nullable=False)
+    title = Column(String, nullable=False)
+    start_datetime = Column(DateTime, nullable=True)
+    end_datetime = Column(DateTime, nullable=True)
+    detail = Column(String, nullable=False)
+    supplier_id = Column(Integer, ForeignKey("supplier.id"))
+    supplier = relationship("Supplier", back_populates="violations")

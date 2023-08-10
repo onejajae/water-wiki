@@ -40,7 +40,7 @@
         <dd class="col-sm-9">
           <div>
             {#each vendor.products as product}
-              <a href="/product/{product.id}" class="btn btn-light rounded-pill btn-sm" type="submit">{product.name}</a>
+              <a href="/product/{product.id}" class="btn btn-light rounded-pill btn-sm me-1 mt-1" type="submit">{product.name}</a>
             {/each}
           </div>
         </dd>

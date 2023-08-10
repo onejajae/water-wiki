@@ -1,4 +1,5 @@
 <script>
+  import dayjs from "dayjs";
   export let supplier
 </script>
 
@@ -28,7 +29,7 @@
   <hr>
   <dt class="col-sm-4">운영 현황</dt>
   <dd class="col-sm-8">
-    {#if supplier.is_running}
+  {#if supplier.is_running}
     <span class="badge rounded-pill text-bg-success">영업 중</span>
   {:else}
     <span class="badge rounded-pill text-bg-secondary">휴업 중</span>
@@ -42,7 +43,7 @@
   <dd class="col-sm-8">{supplier.phone_number}</dd> -->
   <hr>
   <dt class="col-sm-4">허가일자</dt>
-  <dd class="col-sm-8">{supplier.first_permit_datetime}</dd>
+  <dd class="col-sm-8">{dayjs(supplier.first_permit_datetime).format("YYYY년 MM월 DD일")}</dd>
   <hr>
   <dt class="col-sm-4">일일 취수 허용량</dt>
   <dd class="col-sm-8">{supplier.intakes}톤</dd>
@@ -53,3 +54,7 @@
   <dt class="col-sm-4">웹 사이트 </dt>
   <dd class="col-sm-8">바로가기</dd> -->
 </dl>
+
+
+
+

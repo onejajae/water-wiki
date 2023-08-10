@@ -10,6 +10,20 @@ class SupplierBase(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class ViolationBase(BaseModel):
+    id: int
+    level: str
+    title: str
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ViolationRead(ViolationBase):
+    issued_datetime: datetime
+    start_datetime: datetime | None
+    end_datetime: datetime | None
+    detail: str
+
+
 class SupplierCreate(BaseModel):
     name: str
     address: str
@@ -38,6 +52,7 @@ class SupplierRead(SupplierBase):
     intakes: int
     is_running: bool
     products: list["ProductReadMinimal"] = []
+    violations: list[ViolationRead] = []
 
 
 from api.product.schema import ProductReadMinimal, ProductBase

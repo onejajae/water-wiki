@@ -1,6 +1,7 @@
 <script>
   import SupplierDetailProductList from "./SupplierDetailProductList.svelte";
   import SupplierDetailTable from "./SupplierDetailTable.svelte";
+  import SupplierViolantList from "./SupplierViolantList.svelte";
   import supplierApi from "../../api/supplier"
 
   export let meta;
@@ -33,8 +34,9 @@
       </div>
       <SupplierDetailProductList products={supplier.products}/>
     </div>
-    <div class="col-lg-7">
-      <SupplierDetailTable supplier={supplier}/>
+    <div class="col-lg-7 mt-2">
+      <SupplierDetailTable {supplier}/>
+      <SupplierViolantList {supplier}/>
     </div>
   </div>
 {/if}
