@@ -1,25 +1,36 @@
 <script>
   import dayjs from "dayjs";
+  import { onMount } from "svelte";
   export let supplier
+
+  onMount(() => {
+    const center = new naver.maps.LatLng(supplier.loc_y, supplier.loc_x)
+    const mapOptions = {
+      center: center,
+      mapTypeId: "hybrid",
+      zoom: 14,
+      draggable: false,
+      pinchZoom: false,
+      scrollWheel: false,
+    }
+    const map = new naver.maps.Map('navermap', mapOptions)
+    const marker = new naver.maps.Marker({
+      position: center,
+      map: map,
+    })
+  })
 </script>
 
-<div class="card p-4 pb-2 mb-4">
+<div class="card px-4 py-2 mb-4">
   <dl class="row">
     <!-- map start -->
-    <!-- <dd>
-      <div id="kakaomap" class="col" style="height: 300px;">
-        <script>
-          var mapContainer = document.getElementById('kakaomap')
-          var mapOptions = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 4
-          }
-          var map = new kakao.maps.Map(mapContainer, mapOptions)
-  
-        </script>
+    <dd class="px-0">
+      <div id="navermap" class="rounded" style="height: 250px;">
+
       </div>
+
     </dd>
-    <hr class="mt-3"> -->
+    <hr class="mt-1">
     <!-- map end -->
     <dt class="col-sm-4">업체명</dt>
     <dd class="col-sm-8">{supplier.name}</dd>

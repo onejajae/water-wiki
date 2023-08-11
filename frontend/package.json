@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@types/navermaps": "^3.6.5",
     "sass": "^1.63.6",
     "svelte": "^4.0.3",
     "tinro": "^0.6.12",

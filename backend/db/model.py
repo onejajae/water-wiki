@@ -1,4 +1,13 @@
-from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey, Table
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    DateTime,
+    Boolean,
+    ForeignKey,
+    Table,
+    Float,
+)
 from sqlalchemy.orm import relationship
 
 from .core import Base
@@ -38,6 +47,8 @@ class Supplier(Base):
     pipes = Column(Integer, nullable=False)
     intakes = Column(Integer, nullable=False)
     is_running = Column(Boolean, nullable=False)
+    loc_x = Column(Float, nullable=True)
+    loc_y = Column(Float, nullable=True)
     products = relationship(
         "Product", secondary=supplied_product, back_populates="suppliers"
     )
@@ -54,6 +65,8 @@ class Vendor(Base):
     ceo_name = Column(String(10), nullable=False)
     declare_datetime = Column(DateTime, nullable=False)
     is_running = Column(Boolean, nullable=False)
+    loc_x = Column(Float, nullable=True)
+    loc_y = Column(Float, nullable=True)
     products = relationship("Product", back_populates="vendor")
 
 

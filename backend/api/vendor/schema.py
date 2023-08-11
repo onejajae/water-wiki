@@ -33,6 +33,8 @@ class VendorRead(VendorBase):
     ceo_name: str
     declare_datetime: datetime
     is_running: bool
+    loc_x: float
+    loc_y: float
     products: list["ProductReadMinimal"] = []
 
 

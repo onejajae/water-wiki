@@ -52,6 +52,8 @@ class SupplierRead(SupplierBase):
     pipes: int
     intakes: int
     is_running: bool
+    loc_x: float
+    loc_y: float
     products: list["ProductReadMinimal"] = []
     violations: list[ViolationRead] = []
 
