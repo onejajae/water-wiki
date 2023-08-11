@@ -5,7 +5,8 @@
 
 <div class="card p-4 pb-2 mb-4">
   <dl class="row">
-    <dd>
+    <!-- map start -->
+    <!-- <dd>
       <div id="kakaomap" class="col" style="height: 300px;">
         <script>
           var mapContainer = document.getElementById('kakaomap')
@@ -18,7 +19,8 @@
         </script>
       </div>
     </dd>
-    <hr class="mt-3">
+    <hr class="mt-3"> -->
+    <!-- map end -->
     <dt class="col-sm-4">업체명</dt>
     <dd class="col-sm-8">{supplier.name}</dd>
     <hr>
