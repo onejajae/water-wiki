@@ -46,6 +46,13 @@
       {/each}
       {#key searchKeyword}
         <InfiniteLoading on:infinite={infiniteHandler}>
+          <div class="my-5" slot="spinner">
+            <div class="text-center">
+              <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
           <div class="mt-3" slot="noMore">
             총 {vendors.length}개의 유통사를 찾았습니다.
           </div>

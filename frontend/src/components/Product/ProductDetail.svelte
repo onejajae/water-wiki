@@ -24,7 +24,7 @@
 
 
 {#if isLoading}
-<div class="text-center">
+<div class="my-5 text-center">
   <div class="spinner-border text-dark" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>

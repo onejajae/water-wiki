@@ -37,7 +37,7 @@
     <input type="text" class="form-control" placeholder="생수 검색" bind:value={formKeyword}>
     <button class="btn btn-outline-secondary" type="submit" on:click={search}>검색</button>
   </form>
-  <div class="my-3">
+  <div class="mt-1 px-2">
     <div class="row row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
       {#each products as product}
         <ProductListElement {product} />
@@ -45,6 +45,13 @@
     </div>
     {#key searchKeyword}
       <InfiniteLoading on:infinite={infiniteHandler}>
+        <div class="my-5" slot="spinner">
+          <div class="text-center">
+            <div class="spinner-border text-dark" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
         <div class="mt-3" slot="noMore">
           총 {products.length}개의 생수를 찾았습니다.
         </div>

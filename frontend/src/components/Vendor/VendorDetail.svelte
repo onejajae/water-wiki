@@ -21,7 +21,7 @@
 </script>
 
 {#if isLoading}
-<div class="text-center v-100">
+<div class="my-5 text-center">
   <div class="spinner-border text-dark" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
