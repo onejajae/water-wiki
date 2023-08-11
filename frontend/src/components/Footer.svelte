@@ -3,6 +3,7 @@
   import { token } from "../stores";
   import { authApi } from "../api";
   import LoginModal from "./LoginModal.svelte";
+  import TermsOfServiceModal from "./TermsOfServiceModal.svelte";
 
   let isLogin = false
   let isAdmin = false
@@ -11,6 +12,9 @@
   token.is_admin.subscribe(value => isAdmin = value)
 
   const loginModalId = "login-modal"
+  const privacyPolicyModalId = "privacy-policy-modal"
+  const disclaimerModalId = "disclaimer-modal"
+  const termsOfServiceModalId = "terms-of-service-modal"
   
   function logout() {
     token.access_token.set("")
@@ -29,15 +33,16 @@
 
 <div class="bg-light mt-3">
   <nav class="nav justify-content-center py-3">
-    <a href="/" class="nav-link mx-3 text-secondary">Home</a>
     <a href="https://github.com/" class="nav-link mx-3 text-secondary">GitHub</a>
+    <a href={"#"} class="nav-link mx-2 text-secondary" data-bs-toggle="modal" data-bs-target="#{termsOfServiceModalId}">이용약관</a>
     {#if !(isLogin)}
-    <a href={"#"} class="nav-link mx-3 text-secondary" data-bs-toggle="modal" data-bs-target="#{loginModalId}">Login</a>
+    <a href={"#"} class="nav-link mx-2 text-secondary" data-bs-toggle="modal" data-bs-target="#{loginModalId}">로그인</a>
     {:else}
-    <a href={"#"} class="nav-link mx-3 text-secondary" on:click={logout}>Logout</a>
-    <a href={"#"} class="nav-link mx-3 text-secondary" on:click={aboutMe}>Account</a>
+    <a href={"#"} class="nav-link mx-2 text-secondary" on:click={logout}>Logout</a>
+    <a href={"#"} class="nav-link mx-2 text-secondary" on:click={aboutMe}>Account</a>
     {/if}
   </nav>
 </div>
 
 <LoginModal modalId={loginModalId} />
+<TermsOfServiceModal modalId={termsOfServiceModalId} />
