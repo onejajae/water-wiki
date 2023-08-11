@@ -10,6 +10,6 @@
 <section>
   <Router />
 </section>
-<footer>
+<footer class="mt-auto">
   <Footer />
 </footer>
