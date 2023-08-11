@@ -1,6 +1,6 @@
 <script>
   export let modalId;
-  import auth from "../api/auth"
+  import { authApi } from "../api";
   import { token } from "../stores";
 
   let username
@@ -10,7 +10,7 @@
   async function login(event) {
     event.preventDefault()
     try {
-      const res = await auth.login(username, password)
+      const res = await authApi.login(username, password)
       incorrect = false
 
       console.log(res.data)

@@ -2,7 +2,7 @@
   import VendorDetailProductList from "./VendorDetailProductList.svelte";
   import VendorDetailTable from "./VendorDetailTable.svelte";
 
-  import vendorApi from "../../api/vendor";
+  import { vendorApi } from "../../api";
 
   export let meta;
 

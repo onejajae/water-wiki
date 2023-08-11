@@ -1,4 +1,4 @@
-import instance from "../api";
+import instance from "./axiosInstance";
 
 export default {
   getList(page=0, size=30, keyword="") {

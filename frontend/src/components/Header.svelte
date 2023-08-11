@@ -3,7 +3,7 @@
   import { get } from "svelte/store"
   import { token } from "../stores";
   import LoginModal from "./LoginModal.svelte";
-  import authApi from "../api/auth"
+  import { authApi } from "../api";
 
   let isLogin = false
   let isAdmin = false

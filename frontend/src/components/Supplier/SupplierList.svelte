@@ -1,7 +1,6 @@
 <script>
   import SupplierListElement from "./SupplierListElement.svelte";
-  import { onMount } from "svelte";
-  import supplierApi from "../../api/supplier"
+  import { supplierApi } from "../../api"; 
 	import InfiniteLoading from 'svelte-infinite-loading';
 
   let page = 0;
@@ -11,12 +10,6 @@
   let searchKeyword = ""
 
   const accordionId = "supplierListAccordion"
-
-  // onMount(async () => {
-  //   const res = await supplierApi.getList()
-  //   suppliers = res.data
-  //   console.log(suppliers)
-  // })
 
   async function infiniteHandler({ detail: { loaded, complete } }) {
     const res = await supplierApi.getList(page, size, searchKeyword)
@@ -36,9 +29,6 @@
     searchKeyword = formKeyword
     suppliers = []
     page = 0
-
-    // const res = await supplierApi.getList(searchKeyword)
-    // suppliers = res.data
   }
 
 </script>

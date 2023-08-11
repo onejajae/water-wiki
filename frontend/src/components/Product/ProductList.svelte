@@ -1,6 +1,6 @@
 <script>
   import ProductListElement from "./ProductListElement.svelte";
-  import productApi from "../../api/product"
+  import { productApi } from "../../api";
 	import InfiniteLoading from 'svelte-infinite-loading';
 
 

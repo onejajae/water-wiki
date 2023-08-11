@@ -1,6 +1,5 @@
 <script>
-  import productApi from "../../api/product"
-    import supplier from "../../api/supplier";
+  import { productApi } from "../../api";
   
   export let meta;
 
@@ -18,7 +17,6 @@
     isLoading = true
     const res = await productApi.get(meta.params.product_id)
     product = res.data
-    console.log(res.data)
     isLoading = false
   }
 </script>

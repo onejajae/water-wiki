@@ -1,15 +1,14 @@
-import instance from "../api";
+import instance from "./axiosInstance";
 
 export default {
   getList(page=0, size=30, keyword="") {
-    let res = instance.get(`/vendor/`, {
+    const res = instance.get(`/vendor/`, {
       params: {
         page: page,
         size: size,
         keyword: keyword
       }
     })
-    return res
     return res
   },
 

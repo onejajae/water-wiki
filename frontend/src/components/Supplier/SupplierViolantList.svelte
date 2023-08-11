@@ -1,7 +1,6 @@
 <script>
     import SupplierViolant from "./SupplierViolant.svelte";
     export let supplier;
-    $: console.log(supplier)
     let violaions = supplier.violations
     $: {
         if (violaions.length) {

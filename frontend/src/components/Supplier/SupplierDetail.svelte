@@ -2,7 +2,7 @@
   import SupplierDetailProductList from "./SupplierDetailProductList.svelte";
   import SupplierDetailTable from "./SupplierDetailTable.svelte";
   import SupplierViolantList from "./SupplierViolantList.svelte";
-  import supplierApi from "../../api/supplier"
+  import { supplierApi } from "../../api"; 
 
   export let meta;
 
