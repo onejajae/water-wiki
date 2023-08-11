@@ -9,7 +9,7 @@ const items = [
   ]
 </script>
 
-<div>
+<div class="container">
   <ul class="nav nav-pills nav-justified my-2">
     {#each items as item}
       <li class="nav-item">

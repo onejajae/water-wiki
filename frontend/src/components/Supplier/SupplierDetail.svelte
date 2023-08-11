@@ -27,16 +27,15 @@
     </div>
   </div>
 {:else}
-  <div class="row m-2">
-    <div class="col-lg-5">
-      <div>
-        <p class="text-center my-1 fs-4 fw-medium">{supplier.name} 생산제품</p>
-      </div>
-      <SupplierDetailProductList products={supplier.products}/>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <SupplierDetailTable {supplier} />
+      <SupplierViolantList {supplier} />
     </div>
-    <div class="col-lg-7 mt-2">
-      <SupplierDetailTable {supplier}/>
-      <SupplierViolantList {supplier}/>
+    <div class="col-lg-5">
+      <SupplierDetailProductList products={supplier.products} name={supplier.name}/>
     </div>
   </div>
+</div>
 {/if}

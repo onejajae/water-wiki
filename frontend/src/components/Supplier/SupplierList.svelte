@@ -43,24 +43,27 @@
 
 </script>
 
-<form class="input-group">
-  <input type="text" class="form-control" placeholder="수원지 검색" bind:value={formKeyword}>
-  <button class="btn btn-outline-secondary" type="submit" on:click={search}>검색</button>
-</form>
-<div class="my-2">
-  <div class="accordion accordion-flush" id="{accordionId}">
-    {#each suppliers as supplier}
-      <SupplierListElement supplier={supplier} {accordionId} />
-    {/each}
-    {#key searchKeyword}
-      <InfiniteLoading on:infinite={infiniteHandler}>
-        <div class="mt-3" slot="noMore">
-          총 {suppliers.length}개의 수원지를 찾았습니다.
-        </div>
-        <div class="mt-3" slot="noResults">
-          결과가 없습니다.
-        </div>
-      </InfiniteLoading>
-    {/key}
+<div class="container">
+  <form class="input-group">
+    <input type="text" class="form-control" placeholder="수원지 검색" bind:value={formKeyword}>
+    <button class="btn btn-outline-secondary" type="submit" on:click={search}>검색</button>
+  </form>
+  <div class="my-2">
+    <div class="accordion accordion-flush" id="{accordionId}">
+      {#each suppliers as supplier}
+        <SupplierListElement supplier={supplier} {accordionId} />
+      {/each}
+      {#key searchKeyword}
+        <InfiniteLoading on:infinite={infiniteHandler}>
+          <div class="mt-3" slot="noMore">
+            총 {suppliers.length}개의 수원지를 찾았습니다.
+          </div>
+          <div class="mt-3" slot="noResults">
+            결과가 없습니다.
+          </div>
+        </InfiniteLoading>
+      {/key}
+    </div>
   </div>
+
 </div>

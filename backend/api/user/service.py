@@ -34,7 +34,7 @@ def get_access_token(db: Session, username: str, settings: Settings) -> Token:
     return Token(
         access_token=create_token(user, settings),
         username=user.username,
-        admin=True,
+        admin=user.is_admin,
     )
 
 

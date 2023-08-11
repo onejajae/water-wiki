@@ -11,7 +11,8 @@
     }
 </script>
 
-<div class="container">
+<div class="card container p-4 mb-4">
+    <h4 class="card-title">위반 및 처분 결과</h4>
     {#each violaions as violaion}
         <SupplierViolant {violaion}/>
     {/each}

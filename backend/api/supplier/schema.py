@@ -40,6 +40,7 @@ class SupplierReadMinimal(SupplierBase):
     ceo_name: str
     is_running: bool
     products: list["ProductBase"]
+    violations: list[ViolationBase] = []
 
 
 class SupplierRead(SupplierBase):

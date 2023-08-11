@@ -14,7 +14,7 @@ from .service import (
     verify_token,
     authenticate_user,
 )
-from .schema import UserCreate, Token
+from .schema import UserCreate, Token, UserBase
 
 from config import Settings, get_settings
 
@@ -82,6 +82,6 @@ async def get_current_user(
     return user
 
 
-@router.get("/me")
+@router.get("/me", response_model=UserBase)
 async def me(current_user=Depends(get_current_user)):
     return current_user

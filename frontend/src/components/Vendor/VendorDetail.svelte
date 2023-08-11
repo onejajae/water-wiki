@@ -27,15 +27,14 @@
   </div>
 </div>
 {:else}
-<div class="row m-2">
-  <div class="col-lg-5">
-    <div>
-      <p class="text-center my-1 fs-4 fw-medium">판매 중인 제품</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <VendorDetailTable {vendor} />
     </div>
-    <VendorDetailProductList products={vendor.products}/>
-  </div>
-  <div class="col-lg-7">
-    <VendorDetailTable vendor={vendor}/>
+    <div class="col-lg-5">
+      <VendorDetailProductList products={vendor.products} name={vendor.name}/>
+    </div>
   </div>
 </div>
 {/if}
