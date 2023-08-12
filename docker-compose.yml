@@ -4,6 +4,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile.api
     container_name: water-wiki-api
+    restart: always
     volumes:
       - ./backend:/app
     environment:
