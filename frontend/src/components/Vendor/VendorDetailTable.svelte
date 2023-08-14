@@ -8,7 +8,7 @@
 
   const infoWindowContent = [
     `<div class="m-3">`,
-    `<a href="http://map.naver.com/v5/search?c=${vendorPositionEPSG3857.x},${vendorPositionEPSG3857.y},18,0,0,2,dh" class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" rel="noopener noreferrer">`,
+    `<a href="https://map.naver.com/v5/search?c=${vendorPositionEPSG3857.x},${vendorPositionEPSG3857.y},18,0,0,2,dh" class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" rel="noopener noreferrer">`,
     `<h5 class="mb-0">${vendor.name}</h5>`,
     `<p class="link-dark">${vendor.address}</p>`,
     `</a></div>`,
