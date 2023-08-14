@@ -2,21 +2,42 @@
   import { onMount } from "svelte";
   import dayjs from "dayjs";
   export let vendor;
+
+  const vendorPosition = new naver.maps.LatLng(vendor.loc_y, vendor.loc_x)
+  const vendorPositionEPSG3857 = naver.maps.TransCoord.fromLatLngToEPSG3857(vendorPosition)
+
+  const infoWindowContent = [
+    `<div class="m-3">`,
+    `<a href="http://map.naver.com/v5/search?c=${vendorPositionEPSG3857.x},${vendorPositionEPSG3857.y},18,0,0,2,dh" class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" rel="noopener noreferrer">`,
+    `<h5 class="mb-0">${vendor.name}</h5>`,
+    `<p class="link-dark">${vendor.address}</p>`,
+    `</a></div>`,
+  ].join('')
+
+  const mapOptions = {
+    center: vendorPosition,
+    zoom: 14,
+    draggable: false,
+    pinchZoom: false,
+    scrollWheel: false,
+    disableDoubleClickZoom: true,
+    disableDoubleTapZoom: true,
+    logoControl: false,
+    mapDataControl: false,
+    scaleControl: false
+  }
+  const infoWindow = new naver.maps.InfoWindow({
+    content: infoWindowContent,
+    anchorSize: new naver.maps.Size(20, 20),
+  })
+  const marker = new naver.maps.Marker({
+    position: vendorPosition,
+  })
   
   onMount(() => {
-    const center = new naver.maps.LatLng(vendor.loc_y, vendor.loc_x)
-    const mapOptions = {
-      center: center,
-      zoom: 14,
-      draggable: false,
-      pinchZoom: false,
-      scrollWheel: false,
-    }
     const map = new naver.maps.Map('navermap', mapOptions)
-    const marker = new naver.maps.Marker({
-      position: center,
-      map: map,
-    })
+    marker.setMap(map)
+    infoWindow.open(map, marker)
   })
 </script>
 
@@ -24,10 +45,8 @@
   <dl class="row">
     <!-- map start -->
     <dd class="px-0">
-      <div id="navermap" class="rounded" style="height: 250px;">
-
+      <div id="navermap" class="rounded ratio ratio-16x9">
       </div>
-
     </dd>
     <hr class="mt-1">
     <!-- map end -->
