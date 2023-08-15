@@ -9,7 +9,7 @@
     {title: "생수", path: "/product"},
     {title: "수원지", path: "/supplier"},
     {title: "유통사", path: "/vendor"},
-    // {title: "지도", path: "/map"},
+    {title: "지도", path: "/map"},
   ]
 
 </script>
