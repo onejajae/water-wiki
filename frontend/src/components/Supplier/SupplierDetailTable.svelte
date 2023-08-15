@@ -42,7 +42,7 @@
   })
 </script>
 
-<div class="card px-4 pt-2 mb-4">
+<div class="card px-4 pt-2 mb-2">
   <dl class="row">
     <!-- map start -->
     <dd class="p-0">

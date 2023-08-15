@@ -30,13 +30,13 @@
 
 <div class="list-group mb-2">
   <div class="list-group-item">
-    <div class="fs-4 fw-bold text-truncate p-2">
+    <div class="fs-5 fw-semibold text-truncate p-1">
       {name} 생산제품
     </div>
   </div>
   {#each products as product}
   <a href="/product/{product.id}" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between p-1">
+    <div class="d-flex w-100 justify-content-between">
       <div class="fw-semibold text-truncate">{ product.name }</div>
       <small>{ product.vendor.name }</small>
     </div>

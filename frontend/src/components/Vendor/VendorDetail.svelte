@@ -32,10 +32,10 @@
 {:else}
 <div class="container">
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-7 px-1 mt-1">
       <VendorDetailTable {vendor} />
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 px-1 mt-1">
       <VendorDetailProductList products={vendor.products} name={vendor.name}/>
     </div>
   </div>

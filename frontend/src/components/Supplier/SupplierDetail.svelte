@@ -32,11 +32,11 @@
 {:else}
 <div class="container">
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-7 px-1 mt-1">
       <SupplierDetailTable {supplier} />
       <SupplierViolantList {supplier} />
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 px-1 mt-1">
       <SupplierDetailProductList products={supplier.products} name={supplier.name}/>
     </div>
   </div>
