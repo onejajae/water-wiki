@@ -4,6 +4,10 @@
     import { onMount } from "svelte";
     import MarkerClustering from "../utils/marker-tools/js/MarkerClustering";
 
+    import clusterMarker1 from "../utils/marker-tools/image/cluster-marker-1.png"
+    import clusterMarker2 from "../utils/marker-tools/image/cluster-marker-2.png"
+    import clusterMarker3 from "../utils/marker-tools/image/cluster-marker-3.png"
+
     let suppliers = []
     let selectedSupplier;
     let map;
@@ -23,30 +27,20 @@
 
     const htmlMarkers = [
         {
-            content: `<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(src/utils/marker-tools/image/cluster-marker-1.png);background-size:contain;"></div>`,
+            content: `<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(${clusterMarker1});background-size:contain;"></div>`,
             size: new naver.maps.Size(40, 40),
             anchor: new naver.maps.Point(20, 20)
         },
         {
-            content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(src/utils/marker-tools/image/cluster-marker-2.png);background-size:contain;"></div>',
+            content: `<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(${clusterMarker2});background-size:contain;"></div>`,
             size: new naver.maps.Size(40, 40),
             anchor: new naver.maps.Point(20, 20)
         },
         {
-            content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(src/utils/marker-tools/image/cluster-marker-3.png);background-size:contain;"></div>',
+            content: `<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(${clusterMarker3});background-size:contain;"></div>`,
             size: new naver.maps.Size(40, 40),
             anchor: new naver.maps.Point(20, 20)
         },
-        {
-            content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(src/utils/marker-tools/image/cluster-marker-4.png);background-size:contain;"></div>',
-            size: new naver.maps.Size(40, 40),
-            anchor: new naver.maps.Point(20, 20)
-        },
-        {
-            content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(src/utils/marker-tools/image/cluster-marker-5.png);background-size:contain;"></div>',
-            size: new naver.maps.Size(40, 40),
-            anchor: new naver.maps.Point(20, 20)
-        }
 
     ]
 
@@ -90,7 +84,7 @@
             markers: markers,
 	        disableClickZoom: false,
             icons: htmlMarkers,
-            indexGenerator: [10, 100, 200, 500, 1000],
+            indexGenerator: [5, 8, 13],
             stylingFunction:  (clusterMarker, count) => {
                 clusterMarker.getElement().querySelector('div:first-child').innerText = count
             },
