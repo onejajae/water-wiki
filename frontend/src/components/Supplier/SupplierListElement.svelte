@@ -7,7 +7,7 @@
 
 <div class="accordion-item" >
   <h2 class="accordion-header">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{element_id}">
+    <button class="accordion-button collapsed" type="button" style="box-shadow:none;" data-bs-toggle="collapse" data-bs-target="#{element_id}">
       <div class="d-flex align-items-start">
         <div class="align-self-center">
           {#if supplier.is_running}
