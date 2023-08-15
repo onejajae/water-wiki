@@ -39,6 +39,8 @@ class SupplierReadMinimal(SupplierBase):
     phone_number: str | None
     ceo_name: str
     is_running: bool
+    loc_x: float
+    loc_y: float
     products: list["ProductBase"]
     violations: list[ViolationBase] = []
 
